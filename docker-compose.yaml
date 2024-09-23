@@ -1,5 +1,4 @@
 services:
-  services:
   web:
     build: .
-  command: go run cmd/main.go
+    command: go run cmd/main.go
