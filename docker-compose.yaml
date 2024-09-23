@@ -1,4 +1,6 @@
 services:
   web:
     build: .
+    ports:
+      - 3005:3005
     command: go run cmd/main.go
