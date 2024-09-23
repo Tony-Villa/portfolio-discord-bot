@@ -1,0 +1,9 @@
+services:
+  services:
+  web:
+    build: .
+  environment:
+      DISCORD_TOKEN: ${DISCORD_TOKEN}
+      BOT_CHANNEL_ID: ${BOT_CHANNEL_ID}
+      DISCORD_ADMIN_USER_ID: ${DISCORD_ADMIN_USER_ID}
+  command: go run cmd/main.go
