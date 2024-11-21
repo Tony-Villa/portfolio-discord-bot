@@ -1,8 +1,10 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	"log/slog"
 	"net/http"
 	"os"
 	"portfolio-discord-bot/bot"
@@ -20,6 +22,16 @@ func main() {
 }
 
 func ping(w http.ResponseWriter, r *http.Request) {
+
+	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
+	slog.SetDefault(logger)
+	slog.LogAttrs(
+		context.Background(),
+		slog.LevelInfo,
+		"Info message - Ping",
+		slog.Group("request", slog.String("method", r.Method), slog.String("url", r.URL.Path), slog.String("ip", r.RemoteAddr)),
+	)
+
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("pong"))
 }
